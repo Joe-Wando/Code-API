@@ -1,5 +1,6 @@
 
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Category } from 'src/category/category.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 
 @Entity()
 export class Product {
@@ -20,4 +21,8 @@ export class Product {
 
   @Column({ default: true })
   disponible: boolean | undefined;
+
+  @ManyToOne(() => Category, (category) => category.products, {
+      onDelete: 'SET NULL', 
+  }) category: Category;
 }

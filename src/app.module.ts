@@ -4,7 +4,9 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { ProductModule } from './product/product.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Product } from './product/user.entity';
+import { Product } from './product/product.entity';
+import { CategoryModule } from './category/category.module';
+import { Category } from './category/category.entity';
 
 @Module({
   imports: [
@@ -15,10 +17,10 @@ import { Product } from './product/user.entity';
       username: 'root',
       password: '',
       database: 'productdb-l2f',
-      entities: [Product],
+      entities: [Product, Category],
       synchronize: true,
     }),
-    UsersModule, ProductModule],
+    UsersModule, ProductModule, CategoryModule],
   controllers: [AppController],
   providers: [AppService],
 })
